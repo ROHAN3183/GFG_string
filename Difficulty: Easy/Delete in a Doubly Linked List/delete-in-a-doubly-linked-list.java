@@ -131,8 +131,8 @@ class Solution {
           temp.prev.next=null;
           return head;
       }
-        temp.prev.next=temp.next;
-        temp.next.prev=temp.prev;//for particular position
+        temp.next.prev=temp.prev;
+        temp.prev.next=temp.next;//for particular position
         
         return head;
     }
