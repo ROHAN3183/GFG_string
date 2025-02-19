@@ -103,36 +103,33 @@ class Node {
 }
 
 */
-    class Solution {
+
+class Solution {
     Node zigZag(Node head) {
-        ArrayList<Integer>list=new ArrayList<>();
-        Node temp=head;
-        while(temp!=null){
-            list.add(temp.data);
-            temp=temp.next;
-        }
-        Collections.sort(list);
-        temp=head;
-        int i=0;
-        int j=list.size()-1;
-       boolean flag=false;
-        while(temp!=null && i<j){
-            if(!flag){
-                temp.data=list.get(i);
-                i++;
+        // add code here.
+        Node current =head.next;
+        Node prev=head;
+        boolean flag=true;
+        while(current!=null){
+            if(flag){
+                if(prev.data>=current.data){
+                    int x=prev.data;
+                    prev.data=current.data;
+                    current.data=x;
+                }
             }
             else{
-                temp.data=list.get(j);
-                j--;
+                if(prev.data<=current.data){
+                    int x=prev.data;
+                    prev.data=current.data;
+                    current.data=x;
+                }
             }
             flag=!flag;
-            temp=temp.next;
+            prev=prev.next;
+            current=current.next;
         }
-        
-         if (temp != null && i==j) {
-            temp.data = list.get(i);
-        }
-        
         return head;
+        
     }
 }
