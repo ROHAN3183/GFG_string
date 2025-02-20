@@ -1,43 +1,11 @@
-//{ Driver Code Starts
-// Initial Template for Java
+                                        Logic of code
+1) just think about the monotonic stack(non decreasing) property is that it always have the 
+2) The top element is always the smallest in the stack.
+3) apply same logic here if the coming element is larger then the peep element then pop out the element also add span value of the
+    that element.
 
-import java.io.*;
-import java.lang.*;
-import java.util.*;
-
-class Main {
-    public static void main(String args[]) throws IOException {
-        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(read.readLine());
-
-        while (t-- > 0) {
-
-            ArrayList<Integer> array1 = new ArrayList<Integer>();
-            String line = read.readLine();
-            String[] tokens = line.split(" ");
-            for (String token : tokens) {
-                array1.add(Integer.parseInt(token));
-            }
-            ArrayList<Integer> v = new ArrayList<Integer>();
-            int[] arr = new int[array1.size()];
-            int idx = 0;
-            for (int i : array1) arr[idx++] = i;
-
-            v = new Solution().calculateSpan(arr);
-
-            for (int i = 0; i < v.size(); i++) System.out.print(v.get(i) + " ");
-
-            System.out.println();
-
-            System.out.println("~");
-        }
-    }
-}
-// } Driver Code Ends
-
-
-
-class Solution {
+#1 
+    class Solution {
     public ArrayList<Integer> calculateSpan(int[] arr) {
         ArrayList<Integer>list=new ArrayList<>(); 
         Stack<int[]> stack=new Stack<>();
@@ -54,3 +22,24 @@ class Solution {
         return list;
     }
 }
+
+#2
+    class StockSpanner {
+    private Stack<Pair<Integer, Integer>> stack; 
+    public StockSpanner() {
+        stack=new Stack();
+    }
+    
+    public int next(int price) {
+        int span=1;
+        while(!stack.isEmpty() && stack.peek().getKey()<=price){
+            span=span+stack.peek().getValue();
+            stack.pop();
+        }
+        stack.push(new Pair<>(price,span));
+        return span;
+    }
+}
+
+    
+    
