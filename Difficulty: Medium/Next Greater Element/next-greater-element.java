@@ -1,37 +1,32 @@
+                                
 class Solution {
-    // Function to find the next greater element for each element of the array.
     public ArrayList<Integer> nextLargerElement(int[] arr) {
-        Stack<Integer>stack=new Stack<>();
-        ArrayList<Integer>list=new ArrayList<>();
-        int m=arr.length;
-        int j=m-1;
-        while(j>=0){
-            if(!stack.isEmpty()){
-                if(stack.peek()>arr[j]){
-                    list.add(stack.peek());
-                    stack.push(arr[j]);
-                }
-                else{
-                    while(!stack.isEmpty()&&stack.peek()<=arr[j]){
-                        stack.pop();
-                    }
-                    if(!stack.isEmpty()&&stack.peek()>arr[j]){
-                        list.add(stack.peek());
-                        stack.push(arr[j]);
-                        
-                    }
-                    else{
-                        stack.push(arr[j]);
-                        list.add(-1);
-                    }
-                }
+        ArrayList<Integer> list =new ArrayList<>();
+        Stack<Integer> stack=new Stack<>();
+        int n=arr.length;
+        for(int i=n-1;i>=0;i--){
+            if(stack.isEmpty()){
+                list.add(-1);
+                stack.push(arr[i]);
             }
             else{
-                list.add(-1);
-                stack.push(arr[j]); 
+                if(!stack.isEmpty()&& stack.peek()<=arr[i]){
+                    while(!stack.isEmpty() &&stack.peek()<=arr[i] ){
+                        stack.pop();
+                    }
+                    if(!stack.isEmpty()){
+                        list.add(stack.peek());
+                    }
+                    else{
+                        list.add(-1);
+                    }
+                    stack.push(arr[i]);
+                }
+                else{
+                    list.add(stack.peek());
+                    stack.push(arr[i]);
+                }
             }
-            
-            j--;
         }
         Collections.reverse(list);
         return list;
