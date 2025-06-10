@@ -2,28 +2,29 @@ const express = require('express');
 const router = express.Router();
 const Problem = require('../models/Problem');
 
-// @route   POST /api/problems/add
-// @desc    Add a new problem
-// @access  Public (for now; you can secure later)
-router.post('/add', async (req, res) => {
+// Bulk Add Problems
+router.post('/add-multiple', async (req, res) => {
   try {
-    const newProblem = new Problem(req.body);
-    await newProblem.save();
-    res.status(201).json({ msg: 'Problem added successfully' });
+    const problems = req.body;
+
+    if (!Array.isArray(problems) || problems.length === 0) {
+      return res.status(400).json({ msg: 'Invalid data format. Expected an array of problems.' });
+    }
+
+    await Problem.insertMany(problems);
+    res.status(201).json({ msg: 'Problems added successfully' });
   } catch (err) {
-    res.status(500).json({ msg: 'Failed to add problem', error: err.message });
+    res.status(500).json({ msg: 'Server error', error: err.message });
   }
 });
 
-// @route   GET /api/problems
-// @desc    Get all problems
-// @access  Public
+// ✅ GET All Problems
 router.get('/', async (req, res) => {
   try {
-    const problems = await Problem.find();
+    const problems = await Problem.find({});
     res.json(problems);
   } catch (err) {
-    res.status(500).json({ msg: 'Failed to fetch problems', error: err.message });
+    res.status(500).json({ msg: 'Server error', error: err.message });
   }
 });
 
