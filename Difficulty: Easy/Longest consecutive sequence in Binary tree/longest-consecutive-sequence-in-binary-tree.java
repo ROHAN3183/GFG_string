@@ -1,12 +1,24 @@
-class Solution {
-    int count = 0;
-
-    public int longestConsecutive(Node root) {
-        dfs(root);
-        return count < 2 ? -1 : count;
+/*Complete the function below
+Node is as follows
+class TreeNode
+{
+    int key;
+    TreeNode left, right;
+    public TreeNode(int key)
+    {
+        this.key = key;
+        left = right = null;
     }
-
-    int dfs(Node root) {
+}*/
+class Solution {
+     int count = 0;
+    public int longestConsecutive(Node root) {
+        // add code here.
+         dfs(root);
+        return count < 2 ? -1 : count;
+        
+    }
+        int dfs(Node root) {
         if (root == null) return 0;
 
         int left = dfs(root.left);
@@ -24,4 +36,5 @@ class Solution {
         count = Math.max(count, temp);
         return temp;
     }
+    
 }
