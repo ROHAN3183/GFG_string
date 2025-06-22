@@ -200,3 +200,107 @@ make this such it will get the filter feature  first on clicking the All Problem
 Filter
 Leaderboard
 after cliking filter and and apply it will show according that
+***************************************testing******************************************************************************
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  nav {
+    background-color: #604ec7;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  nav h1 {
+    font-size: 24px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav ul li {
+    cursor: pointer;
+  }
+  
+  .hero {
+    padding: 60px 30px;
+    text-align: center;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+  }
+  
+  .hero h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+  }
+  
+  .section {
+    padding: 40px 30px;
+  }
+  
+  .section h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2d2dff;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 250px;
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  /* Nav link styling */
+    nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    }
+  
+    nav ul li a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+    }
+  
+  
+  footer {
+    background-color: #2d2dff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+
+  
