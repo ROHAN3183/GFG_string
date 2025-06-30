@@ -1,26 +1,23 @@
 class Tree {
+    int ceil=-1;
     int findCeil(Node root, int key) {
-        List<Node>list=new ArrayList<>();
-        inorder(root,list);
-        int size=list.size();
-        for(int i=0;i<size;i++){
-            Node node=list.get(i);
-            if(node.data==key){
-                return node.data;
-            }
-            else if(node.data>key){
-                return node.data;
-            }
-        }
-        return -1;
+        inorder(root,key);
         
+        return ceil;
     }
-    void inorder(Node root,List<Node>list){
+    void inorder(Node root,int key){
         if(root==null){
             return;
         }
-        inorder(root.left,list);
-        list.add(root);
-        inorder(root.right,list);
+        
+        inorder(root.left,key);
+        
+        if(root.data>=key && ceil==-1){
+           ceil=root.data;
+           return;
+        }
+
+        inorder(root.right,key);
+      
     }
 }
