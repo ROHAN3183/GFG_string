@@ -14,10 +14,16 @@ class Solution {
             int val = list.get(mid).data;
 
             if (val == key) {
-                if (mid > 0) predecessor = list.get(mid - 1);
-                if (mid < list.size() - 1) successor = list.get(mid + 1);
+                if(mid>0){
+                    predecessor=list.get(mid-1);
+                }
+                if(mid<list.size()-1){
+                    successor=list.get(mid+1);
+                    
+                }
                 break;
-            } else if (val > key) {
+            }
+            else if (val > key) {
                 successor = list.get(mid);
                 high = mid - 1;
             } else {
