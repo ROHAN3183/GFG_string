@@ -1,3 +1,6 @@
+/*logic of the code : inorder traversal
+Always add the lastvisit.right=root so that it will form the chain and also store head for the first time when lastvisit is null
+*/
 class Solution {
     Node lastvisit=null;
     Node head=null;
