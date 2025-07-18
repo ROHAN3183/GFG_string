@@ -1,3 +1,10 @@
+/*LOGIC OF THE CODE 
+Smiliar code to the leetcode - 378
+2 times Binary Search
+first the min and the max range so , on that we can apply the binary search  to get the target.
+second for count the number of the smallest element in the matrix.
+*/
+***********************************************OPTIMIZED CODE*******************************************************************
 class Solution {
     int median(int mat[][]) {
         int min=Integer.MAX_VALUE;
