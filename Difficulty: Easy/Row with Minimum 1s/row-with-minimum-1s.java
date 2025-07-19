@@ -1,3 +1,7 @@
+/* Logic of the code :
+Apply the binary Search on the each row and find the count of the 1's
+*/
+********************************************OPTIMIZED CODE**********************************************************************
 class Solution {
     int minRow(int mat[][]) {
         int row=mat.length;
