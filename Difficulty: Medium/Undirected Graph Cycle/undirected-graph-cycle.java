@@ -1,7 +1,16 @@
 class Solution {
+        class Pair{
+            int i;
+            int parent;
+            Pair(int i,int parent){
+                this.i=i;
+                this.parent=parent;
+            }
+        }
     public boolean isCycle(int V, int[][] edges) {
-        boolean [] visited= new boolean [V];
         ArrayList<ArrayList<Integer>>adj=new ArrayList<>();
+        Queue<Pair>queue=new LinkedList<>();
+        boolean [] visited = new boolean [V];
         for(int i=0;i<V;i++){
             adj.add(new ArrayList<>());
             
@@ -15,28 +24,33 @@ class Solution {
         }
         for(int i=0;i<V;i++){
             if(!visited[i]){
-                if( dfs(adj,visited,i,-1)){
+                if(bfs(adj,visited,i,queue,-1)){
                     return true;
                 }
             }
         }
         return false;
     }
-    boolean dfs(ArrayList<ArrayList<Integer>>adj,boolean [] visited,int node,int parent){
-        visited[node]=true;
-        for(int neighour:adj.get(node)){
-            if(!visited[neighour]){
-                if(dfs(adj,visited,neighour,node)){
-                    return true;
+    boolean bfs(ArrayList<ArrayList<Integer>>adj,boolean [] visited , int i0,Queue<Pair>queue,int parent){
+        queue.offer(new Pair(i0,parent));
+        visited[i0]=true;
+        while(!queue.isEmpty()){
+            Pair node=queue.poll();
+
+            for(int neighour :adj.get(node.i)){
+                if(!visited[neighour]){
+                    queue.offer(new Pair(neighour,node.i));
+                    visited[neighour]=true;
+                }
+                else{
+                    if(neighour!=node.parent){
+                        return true;
+                    }
                 }
             }
-            else{
-                if(neighour!=parent){
-                    return true;
-                }
-                
-            }
+            
         }
         return false;
     }
+    
 }
